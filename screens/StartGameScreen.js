@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import PrimaryButton from "./../components/PrimaryButton";
+import Title from "../components/Title";
 
 function StartGameScreen({onPickNumber}) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -23,6 +24,7 @@ function StartGameScreen({onPickNumber}) {
   const confirmHandler = () => {
     const chosenNumber = Number(enteredNumber);
 
+    // validate the chosen number
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
           "Invalid input " + enteredNumber,
@@ -39,7 +41,7 @@ function StartGameScreen({onPickNumber}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Guess My Number</Text>
+      <Title>Guess My Number</Title>
       <StatusBar style="light" />
 
       <View style={styles.textInputContainer}>
@@ -73,20 +75,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 16,
   },
-  header: {
-    fontSize: 20,
-    fontWeight: "bold",
-    borderWidth: 2,
-    padding: 10,
-    marginBottom: 30,
-    color: "white",
-    borderColor: "white",
-  },
+
   textInputContainer: {
     width: "100%",
     backgroundColor: "#72063c",
     alignItems: "center",
     padding: 20,
+    marginTop: 40,
     borderRadius: 10,
 
     elevation: 4, // android shadow
