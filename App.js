@@ -1,10 +1,8 @@
 import StartGameScreen from "./screens/StartGameScreen";
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from "react-native";
 
 export default function App() {
-  return (
-     <StartGameScreen/>
-  );
+  return <StartGameScreen />;
 }
 
 const styles = StyleSheet.create({});
