@@ -1,4 +1,5 @@
 import React from "react";
+import Color from '../../constants/Colors';
 import {View, Text, StyleSheet, Pressable, Platform} from "react-native";
 
 function PrimaryButton(props) {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
         borderRadius: 28,
     },
     buttonInnerContainer: {
-        backgroundColor: "#9c1a59",
+        backgroundColor: Color.primary400,
         elevation: 4,
     },
     buttonText: {

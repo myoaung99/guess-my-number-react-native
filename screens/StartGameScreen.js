@@ -7,8 +7,9 @@ import {
   View,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import PrimaryButton from "./../components/PrimaryButton";
-import Title from "../components/Title";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Title from "../components/ui/Title";
+import Color from "../constants/Colors";
 
 function StartGameScreen({onPickNumber}) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
 
   textInputContainer: {
     width: "100%",
-    backgroundColor: "#72063c",
+    backgroundColor: Color.primary500,
     alignItems: "center",
     padding: 20,
     marginTop: 40,
@@ -94,17 +95,17 @@ const styles = StyleSheet.create({
   textInputHeader: {
     fontSize: 20,
     marginBottom: 30,
-    color: "#ddb52f",
+    color: Color.accent500,
   },
   textInput: {
     borderBottomWidth: 2,
-    borderBottomColor: "#ddb52f",
+    borderBottomColor: Color.accent500,
     marginBottom: 20,
     height: 50,
     width: 50,
     fontSize: 25,
     fontWeight: "bold",
-    color: "#ddb52f",
+    color: Color.accent500,
     textAlign: "center",
   },
   buttonsContainer: {
