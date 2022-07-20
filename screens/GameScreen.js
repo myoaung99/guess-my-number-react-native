@@ -21,14 +21,26 @@ function generateRandomNumber(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-function GameScreen({ userPickedNumber, onGameOver }) {
+function GameScreen({ userPickedNumber, onGameOver, onSaveGuess }) {
   const initialGuess = generateRandomNumber(1, 100, userPickedNumber); // use only first time
-
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
+  //guess log
+  const [guesses, setGuesses] = useState([]);
+
+  console.log("Min: " + minBoundary, "Max: " + maxBoundary);
+
+  console.log("On Going Guesses: " + guesses);
+
   useEffect(() => {
+    // record guesses
+    setGuesses((previousGuess) => [...previousGuess, currentGuess]);
+
     if (currentGuess === parseInt(userPickedNumber)) {
-      onGameOver();
+      // reset min, max boundaries on game over for next new game
+      minBoundary = 1;
+      maxBoundary = 100;
+      onGameOver(guesses);
     }
   }, [currentGuess, userPickedNumber, onGameOver]);
 
