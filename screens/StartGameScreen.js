@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Color from "../constants/Colors";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
-function StartGameScreen({onPickNumber}) {
+function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   const textInputHandler = (enteredText) => {
@@ -28,10 +24,10 @@ function StartGameScreen({onPickNumber}) {
     // validate the chosen number
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-          "Invalid input " + enteredNumber,
-          "Number must be a number between 1 and 99",
-          [{text: "okay", style: "destructive", onPress: textResetHandler}, ]
-      )
+        "Invalid input " + enteredNumber,
+        "Number must be a number between 1 and 99",
+        [{ text: "okay", style: "destructive", onPress: textResetHandler }]
+      );
       return;
     }
     console.log("Valid number: " + enteredNumber);
@@ -44,9 +40,8 @@ function StartGameScreen({onPickNumber}) {
     <View style={styles.container}>
       <Title>Guess My Number</Title>
       <StatusBar style="light" />
-
-      <View style={styles.textInputContainer}>
-        <Text style={styles.textInputHeader}>Enter a Number</Text>
+      <Card>
+        <InstructionText>Enter a Number</InstructionText>
         <TextInput
           style={styles.textInput}
           keyboardType="number-pad"
@@ -64,7 +59,7 @@ function StartGameScreen({onPickNumber}) {
             <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -75,27 +70,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
-  },
-
-  textInputContainer: {
-    width: "100%",
-    backgroundColor: Color.primary500,
-    alignItems: "center",
-    padding: 20,
-    marginTop: 40,
-    borderRadius: 10,
-
-    elevation: 4, // android shadow
-
-    shadowColor: "black", // iso shadow
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
-  },
-  textInputHeader: {
-    fontSize: 20,
-    marginBottom: 30,
-    color: Color.accent500,
   },
   textInput: {
     borderBottomWidth: 2,
