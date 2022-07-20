@@ -63,6 +63,7 @@ function GameScreen({ userPickedNumber, onGameOver }) {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <OpponentGuess>{currentGuess}</OpponentGuess>
+
       <Card>
         <InstructionText>Higher or Lower ?</InstructionText>
         <View style={styles.buttonsContainer}>

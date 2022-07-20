@@ -1,8 +1,10 @@
 const Color = {
-    primary500: '#72063c',
-    primary600: '#81164b',
-    primary700: '#771c4a',
+    primary500: '#50052c',
+    primary600: '#7b0d43',
+    primary700: '#970b52',
     accent500: '#ddb52f',
 };
 
 export default Color;
+
+import React from 'react';

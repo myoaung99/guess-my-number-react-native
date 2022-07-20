@@ -22,10 +22,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     borderColor: Color.accent500,
     marginHorizontal: 20,
+
   },
   guessText: {
     color: Color.accent500,
-    fontWeight: "bold",
+    fontFamily: 'open-sans-bold',
     fontSize: 50,
   },
 });
