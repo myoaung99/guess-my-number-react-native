@@ -6,7 +6,7 @@ function PrimaryButton(props) {
     return (
         <View style={styles.buttonOuterContainer}>
             <Pressable
-                android_ripple={{color: "#8b0b4f"}}
+                android_ripple={{color: Color.primary700}}
                 style={({pressed}) => pressed
                     ? (Platform.OS === "ios" && [styles.buttonInnerContainer, styles.pressed])
                     : styles.buttonInnerContainer}
@@ -22,12 +22,12 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
     buttonOuterContainer: {
-        margin: 8,
+        margin: 4,
         overflow: 'hidden',
         borderRadius: 28,
     },
     buttonInnerContainer: {
-        backgroundColor: Color.primary400,
+        backgroundColor: Color.primary600,
         elevation: 4,
     },
     buttonText: {

@@ -15,6 +15,7 @@ export default OpponentGuess;
 const styles = StyleSheet.create({
     guessContainer: {
         borderWidth: 2,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 30,
