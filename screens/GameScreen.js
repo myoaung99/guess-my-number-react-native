@@ -70,6 +70,9 @@ function GameScreen({ userPickedNumber, onGameOver }) {
     setGuesses((previousGuess) => [newRandomNumber, ...previousGuess]);
   };
 
+  // number of round = array length - index
+  const guessRoundListLength = guesses.length;
+
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
@@ -95,7 +98,9 @@ function GameScreen({ userPickedNumber, onGameOver }) {
       <View style={styles.guessLogContainer}>
         <FlatList
           data={guesses}
-          renderItem={({ item }) => <GuessLog item={item} />}
+          renderItem={({ item, index }) => (
+            <GuessLog round={guessRoundListLength - index} item={item} />
+          )}
           keyExtractor={(item) => item}
         />
       </View>
