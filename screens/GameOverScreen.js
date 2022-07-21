@@ -17,9 +17,8 @@ const GameOverScreen = ({ onNewGame, pickNumber, guesses }) => {
       </View>
 
       <Text style={styles.summaryText}>
-        Your phone needed{" "}
-        <Text style={styles.hightLightText}>{guesses.length + 1}</Text> rounds
-        to guess the number{" "}
+        Your phone needed <Text style={styles.hightLightText}>{guesses}</Text>{" "}
+        rounds to guess the number{" "}
         <Text style={styles.hightLightText}>{pickNumber}</Text>.
       </Text>
       <PrimaryButton onPress={onNewGame}>Start New Game</PrimaryButton>

@@ -15,7 +15,7 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(true);
 
   //guess log
-  const [guesses, setGuesses] = useState([]);
+  const [guesses, setGuesses] = useState(0);
 
   console.log("Final guess: " + guesses);
   console.log("Number of guesses: " + guesses.length);
@@ -50,9 +50,9 @@ export default function App() {
   };
 
   // game over
-  const gameOverHandler = (guesses) => {
+  const gameOverHandler = (numberOfGuesses) => {
     setIsGameOver(true);
-    setGuesses(guesses);
+    setGuesses(numberOfGuesses);
   };
 
   console.log("User picked number: " + pickNumber);
