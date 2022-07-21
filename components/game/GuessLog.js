@@ -1,9 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet, Dimensions} from "react-native";
 import Colors from "../../constants/Colors";
 
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
+
 const GuessLog = ({ round, item }) => {
-  console.log("a log");
   return (
     <View style={styles.guessLog}>
       <Text style={styles.guess}>#{round} </Text>

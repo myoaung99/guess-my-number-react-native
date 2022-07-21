@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Title from "../components/ui/Title";
-import { View, FlatList, StyleSheet, Alert } from "react-native";
+import {View, FlatList, StyleSheet, Alert, Dimensions} from "react-native";
 import OpponentGuess from "../components/game/OpponentGuess";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
 import { Ionicons } from "@expo/vector-icons";
 import GuessLog from "../components/game/GuessLog";
+
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 // include min exclude max
 function generateRandomNumber(min, max, exclude) {
@@ -28,10 +32,6 @@ function GameScreen({ userPickedNumber, onGameOver }) {
 
   //guess log
   const [guesses, setGuesses] = useState([initialGuess]);
-
-  console.log("Min: " + minBoundary, "Max: " + maxBoundary);
-
-  console.log("On Going Guesses: " + guesses);
 
   useEffect(() => {
     if (currentGuess === parseInt(userPickedNumber)) {
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
   screen: {
     padding: 16,
     flex: 1,
+    alignItems: "center",
   },
   buttonsContainer: {
     flexDirection: "row",
@@ -123,6 +124,6 @@ const styles = StyleSheet.create({
   },
   guessLogContainer: {
     flex: 1,
-    marginTop: 30,
+    marginTop: deviceWidth < 350 ? 15: 30,
   },
 });

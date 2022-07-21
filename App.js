@@ -1,6 +1,6 @@
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
-import { ImageBackground, StyleSheet, SafeAreaView } from "react-native";
+import {ImageBackground, StyleSheet, SafeAreaView, useWindowDimensions, Dimensions} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState, useCallback } from "react";
 import GameOverScreen from "./screens/GameOverScreen";
@@ -16,9 +16,6 @@ export default function App() {
 
   //guess log
   const [guesses, setGuesses] = useState(0);
-
-  console.log("Final guess: " + guesses);
-  console.log("Number of guesses: " + guesses.length);
 
   // splash screen
   const [appIsReady, setAppIsReady] = useState(false);
@@ -55,7 +52,6 @@ export default function App() {
     setGuesses(numberOfGuesses);
   };
 
-  console.log("User picked number: " + pickNumber);
 
   const newGameHandler = () => {
     setPickNumber(undefined);
@@ -88,6 +84,8 @@ export default function App() {
   if (!fontLoaded) {
     return null;
   }
+
+
 
   return (
     <LinearGradient colors={["#72063c", "#ddb52f"]} style={styles.rootScreen}>

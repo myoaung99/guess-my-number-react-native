@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
+import {Alert, StyleSheet, Vibration, TextInput, View, Dimensions} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Color from "../constants/Colors";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -16,6 +20,7 @@ function StartGameScreen({ onPickNumber }) {
 
   const textResetHandler = () => {
     setEnteredNumber("");
+    Vibration.vibrate(100);
   };
 
   const confirmHandler = () => {

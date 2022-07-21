@@ -1,8 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import {View, Text, StyleSheet, Image, Dimensions} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Color from "../constants/Colors";
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 const GameOverScreen = ({ onNewGame, pickNumber, guesses }) => {
   return (
@@ -17,9 +20,9 @@ const GameOverScreen = ({ onNewGame, pickNumber, guesses }) => {
       </View>
 
       <Text style={styles.summaryText}>
-        Your phone needed <Text style={styles.hightLightText}>{guesses}</Text>{" "}
+        Your phone needed <Text style={styles.highLightText}>{guesses}</Text>{" "}
         rounds to guess the number{" "}
-        <Text style={styles.hightLightText}>{pickNumber}</Text>.
+        <Text style={styles.highLightText}>{pickNumber}</Text>.
       </Text>
       <PrimaryButton onPress={onNewGame}>Start New Game</PrimaryButton>
     </View>
@@ -36,11 +39,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: {
-    width: 270,
-    height: 270,
+    width: deviceWidth < 380 ? 150 : 300,
+    height: deviceWidth < 380 ? 150 : 300,
+    borderRadius: deviceWidth < 380 ? 75 : 150,
     alignItems: "center",
-    margin: 30,
-    borderRadius: 200,
+    margin: deviceWidth < 350 ? 20 : 30,
+
     borderWidth: 3,
     overflow: "hidden",
   },
@@ -51,11 +55,11 @@ const styles = StyleSheet.create({
   },
   summaryText: {
     fontFamily: "open-sans",
-    fontSize: 20,
+    fontSize: deviceWidth < 350 ? 18 : 20,
     textAlign: "center",
-    marginBottom: 30,
+    marginBottom: deviceWidth < 350 ? 15 : 30,
   },
-  hightLightText: {
+  highLightText: {
     fontFamily: "open-sans-bold",
     color: Color.primary500,
   },

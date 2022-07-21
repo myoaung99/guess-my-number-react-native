@@ -1,6 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet, Dimensions} from "react-native";
 import Color from "../../constants/Colors";
+
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 function OpponentGuess({ children }) {
   return (
@@ -18,15 +22,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    padding: 30,
-    marginTop: 30,
+    padding: deviceWidth < 350 ? 20: 30,
+    marginTop: deviceWidth < 350 ? 20: 30,
     borderColor: Color.accent500,
-    marginHorizontal: 20,
 
   },
   guessText: {
     color: Color.accent500,
-    fontFamily: 'open-sans-bold',
-    fontSize: 50,
+    fontFamily: "open-sans-bold",
+    fontSize: deviceWidth < 350 ? 26: 36,
   },
 });
