@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.primary500,
     alignItems: "center",
     padding: 20,
-    marginTop: deviceWidth < 350 ? 20 : 50,
+    marginTop: deviceWidth < 350 ? 20 : deviceHeight < 400 ? 20 : 40,
     borderRadius: 10,
 
     elevation: 4, // android shadow

@@ -10,6 +10,7 @@ import GuessLog from "../components/game/GuessLog";
 
 
 const deviceWidth = Dimensions.get('window').width;
+// const deviceHeight = Dimensions.get('window').height;
 
 // include min exclude max
 function generateRandomNumber(min, max, exclude) {
@@ -74,7 +75,7 @@ function GameScreen({ userPickedNumber, onGameOver }) {
   // number of round = array length - index
   const guessRoundListLength = guesses.length;
 
-  const {width: deviceWidth} = useWindowDimensions();
+  const {width: deviceWidth, height: deviceHeight} = useWindowDimensions();
 
   let content = (
       <>
@@ -119,8 +120,12 @@ function GameScreen({ userPickedNumber, onGameOver }) {
     )
   }
 
+  const screenSpacing = {
+    paddingTop: deviceHeight < 400 ? 20 : 60,
+  }
+
   return (
-    <View style={styles.screen}>
+    <View style={[styles.screen, screenSpacing]}>
       <Title>Opponent's Guess</Title>
       {content}
 
@@ -142,8 +147,10 @@ export default GameScreen;
 const styles = StyleSheet.create({
   screen: {
     padding: 16,
+    // paddingTop: deviceHeight < 400 ? 20: 40,
     flex: 1,
     alignItems: "center",
+
   },
   buttonsContainer: {
     flexDirection: "row",

@@ -53,7 +53,7 @@ function StartGameScreen({ onPickNumber }) {
         <KeyboardAvoidingView style={styles.screen} behavior='position'>
         <View style={[styles.container, { marginTop: height < 380 ? 10 : 100 }]}>
           <Title>Guess My Number</Title>
-          <StatusBar style="light" />
+
           <Card>
             <InstructionText>Enter a Number</InstructionText>
             <TextInput

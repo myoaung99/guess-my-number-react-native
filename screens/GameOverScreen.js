@@ -30,9 +30,14 @@ const GameOverScreen = ({ onNewGame, pickNumber, guesses }) => {
     borderRadius: imageSize/2,
   }
 
+
+  const screenSpacing = {
+    paddingTop: deviceHeight < 400 ? 20 : 60,
+  }
+
   return (
       <ScrollView>
-        <View style={styles.screen}>
+        <View style={[styles.screen, screenSpacing]}>
 
           <Title>Game Over</Title>
           <View style={[styles.imageContainer, imageStyle]}>

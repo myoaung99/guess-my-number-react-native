@@ -6,6 +6,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import GameOverScreen from "./screens/GameOverScreen";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import {StatusBar} from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -85,21 +86,23 @@ export default function App() {
     return null;
   }
 
-
-
   return (
-    <LinearGradient colors={["#72063c", "#ddb52f"]} style={styles.rootScreen}>
-      <ImageBackground
-        resizeMode="cover"
-        imageStyle={styles.imageStyle}
-        style={{ width: "100%", height: "100%" }}
-        source={require("./assets/images/rootbg.jpg")}
-      >
-        <SafeAreaView style={styles.rootScreen} onLayout={onLayoutRootView}>
-          {screen}
-        </SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+      <>
+        <StatusBar style="light" />
+        <LinearGradient colors={["#72063c", "#ddb52f"]} style={styles.rootScreen}>
+          <ImageBackground
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={{ width: "100%", height: "100%" }}
+              source={require("./assets/images/rootbg.jpg")}
+          >
+            <SafeAreaView style={styles.rootScreen} onLayout={onLayoutRootView}>
+              {screen}
+            </SafeAreaView>
+          </ImageBackground>
+        </LinearGradient>
+      </>
+
   );
 }
 
