@@ -13,7 +13,7 @@ export default Title;
 const styles = StyleSheet.create({
   title: {
     fontSize: 22,
-    borderWidth: Platform.OS === "ios" ? 2 : 0,
+    borderWidth: Platform.select({ios: 0, android: 2}),
     borderColor: "white",
     color: "white",
     fontFamily: "open-sans-bold",
