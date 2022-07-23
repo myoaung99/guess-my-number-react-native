@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Title from "../components/ui/Title";
-import {View, FlatList, StyleSheet, Alert, Dimensions} from "react-native";
+import {View, FlatList, StyleSheet, Alert, Dimensions, useWindowDimensions} from "react-native";
 import OpponentGuess from "../components/game/OpponentGuess";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
@@ -10,7 +10,6 @@ import GuessLog from "../components/game/GuessLog";
 
 
 const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('window').height;
 
 // include min exclude max
 function generateRandomNumber(min, max, exclude) {
@@ -29,6 +28,8 @@ let maxBoundary = 100;
 function GameScreen({ userPickedNumber, onGameOver }) {
   const initialGuess = generateRandomNumber(1, 100, userPickedNumber); // use only first time
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+
 
   //guess log
   const [guesses, setGuesses] = useState([initialGuess]);
@@ -73,29 +74,57 @@ function GameScreen({ userPickedNumber, onGameOver }) {
   // number of round = array length - index
   const guessRoundListLength = guesses.length;
 
-  return (
-    <View style={styles.screen}>
-      <Title>Opponent's Guess</Title>
-      <OpponentGuess>{currentGuess}</OpponentGuess>
+  const {width: deviceWidth} = useWindowDimensions();
 
-      <Card>
-        <InstructionText>Higher or Lower ?</InstructionText>
-        <View style={styles.buttonsContainer}>
-          <View style={styles.buttonContainer}>
+  let content = (
+      <>
+        <OpponentGuess>{currentGuess}</OpponentGuess>
+
+        <Card>
+          <InstructionText>Higher or Lower ?</InstructionText>
+          <View style={styles.buttonsContainer}>
+            <View style={styles.buttonContainer}>
+              <PrimaryButton onPress={directionHandler.bind(this, "greater")}>
+                <Ionicons name="add" size={20} color="white" />
+              </PrimaryButton>
+            </View>
+
+            <View style={styles.buttonContainer}>
+              <PrimaryButton onPress={directionHandler.bind(this, "lower")}>
+                <Ionicons name="remove" size={20} color="white" />
+              </PrimaryButton>
+            </View>
+          </View>
+        </Card>
+
+      </>
+  )
+
+  // on landscape orientation
+  if(deviceWidth > 500){
+    content = (
+        <View style={styles.landscapeContainer}>
+          <View style={[styles.buttonContainer, {paddingHorizontal: 60,}]}>
             <PrimaryButton onPress={directionHandler.bind(this, "greater")}>
               <Ionicons name="add" size={20} color="white" />
             </PrimaryButton>
           </View>
-
-          <View style={styles.buttonContainer}>
+          <OpponentGuess>{currentGuess}</OpponentGuess>
+          <View style={[styles.buttonContainer, {paddingHorizontal: 60,}]}>
             <PrimaryButton onPress={directionHandler.bind(this, "lower")}>
               <Ionicons name="remove" size={20} color="white" />
             </PrimaryButton>
           </View>
         </View>
-      </Card>
+    )
+  }
 
-      <View style={styles.guessLogContainer}>
+  return (
+    <View style={styles.screen}>
+      <Title>Opponent's Guess</Title>
+      {content}
+
+      <View style={deviceWidth > 500 ? {...styles.guessLogContainer, marginTop: 20}: styles.guessLogContainer}>
         <FlatList
           data={guesses}
           renderItem={({ item, index }) => (
@@ -126,4 +155,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: deviceWidth < 350 ? 15: 30,
   },
+  landscapeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  }
 });

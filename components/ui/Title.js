@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, StyleSheet, Dimensions} from "react-native";
+import {Text, StyleSheet, Dimensions, Platform} from "react-native";
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -13,7 +13,7 @@ export default Title;
 const styles = StyleSheet.create({
   title: {
     fontSize: 22,
-    borderWidth: 2,
+    borderWidth: Platform.OS === "ios" ? 2 : 0,
     borderColor: "white",
     color: "white",
     fontFamily: "open-sans-bold",

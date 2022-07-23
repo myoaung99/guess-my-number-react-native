@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, Dimensions} from "react-native";
+import {View, Text, StyleSheet, Dimensions, useWindowDimensions} from "react-native";
 import Color from "../../constants/Colors";
 
 
@@ -7,8 +7,10 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 function OpponentGuess({ children }) {
+  const {width: deviceWidth} = useWindowDimensions();
+
   return (
-    <View style={styles.guessContainer}>
+    <View style={deviceWidth > 500 ? {...styles.guessContainer, padding: 10} : styles.guessContainer}>
       <Text style={styles.guessText}>{children}</Text>
     </View>
   );

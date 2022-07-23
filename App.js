@@ -70,7 +70,7 @@ export default function App() {
       />
     );
   }
-  // after user pickNumber and game is over
+  // after user pick number and game is over
   if (isGameOver && pickNumber) {
     screen = (
       <GameOverScreen

@@ -13,7 +13,7 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    width: deviceWidth < 350 ? 300 : 350,
+    width: deviceWidth < 350 ? 300 : 500,
     maxWidth: '98%',
     backgroundColor: Color.primary500,
     alignItems: "center",
